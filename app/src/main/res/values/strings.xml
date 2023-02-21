@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Memllo</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="user_name">User name</string>
+    <string name="or">--------------------OR--------------------</string>
+    <string name="create_a_new_account">CREATE NEW ACCOUNT</string>
+    <string name="create_account">Create Account</string>
+    <string name="sign_in">Sign In</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="Shoping">Shoping</string>
+</resources>

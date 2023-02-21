@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+ <item
+     android:id="@+id/memesVideoFragment"
+     android:name="com.techvanka.memllo.fragments.MemesVideoFragment"
+     android:icon="@drawable/ic_home_foreground"
+     android:title="Memes"/>
+ <item
+     android:id="@+id/inboxFragment"
+     android:name="com.techvanka.memllo.fragments.InboxFragment"
+     android:icon = "@drawable/ic_inbox_foreground"
+     android:title="Inbox"/>
+ <item
+     android:id="@+id/uploadFragment"
+     android:name="com.techvanka.memllo.fragments.UploadFragment"
+     android:icon="@drawable/ic_add_foreground"
+     android:title="Upload"
+  />
+
+
+ <item
+     android:id="@+id/memesMarket"
+     android:name="com.techvanka.memllo.fragments.MemesMarket"
+     android:icon="@drawable/ic_market_foreground"
+     android:title="@string/Shoping"/>
+ <item
+     android:id="@+id/accountFragment"
+     android:name="com.techvanka.memllo.fragments.AccountFragment"
+     android:title="Account"
+     android:icon="@drawable/user_account_foreground"/>
+
+</menu>

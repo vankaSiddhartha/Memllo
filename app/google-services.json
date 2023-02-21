@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1053413319277",
+    "firebase_url": "https://memllo369-ff432-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "memllo369-ff432",
+    "storage_bucket": "memllo369-ff432.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1053413319277:android:9cf48e1e73845f98969564",
+        "android_client_info": {
+          "package_name": "com.techvanka.memllo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1053413319277-bqhstol0ptb4replbjqijv85cumnvdsv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDf9POxXlU4GJ6vPj036o2AJAzOKK7iSJ8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1053413319277-bqhstol0ptb4replbjqijv85cumnvdsv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
