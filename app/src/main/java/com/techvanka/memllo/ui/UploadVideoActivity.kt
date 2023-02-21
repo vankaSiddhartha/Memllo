@@ -60,7 +60,7 @@ class UploadVideoActivity : AppCompatActivity() {
          .addListenerForSingleValueEvent(object : ValueEventListener{
              override fun onDataChange(snapshot: DataSnapshot) {
                  var data = snapshot.getValue(User::class.java)
-    var VideoData = VideoUploadModel(binding.titleInput.text.toString(),vid.toString(),videoId,FirebaseAuth.getInstance().currentUser!!.uid,data!!.name,data.profile)
+    var VideoData = VideoUploadModel(binding.titleInput.text.toString(),vid.toString(),videoId,FirebaseAuth.getInstance().currentUser!!.uid,data?.name,data?.profile)
                  FirebaseDatabase.getInstance().getReference("Videos").child(videoId).setValue(VideoData).addOnSuccessListener {
                      binding.uploadPb.visibility = View.GONE
 
