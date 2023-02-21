@@ -63,9 +63,14 @@ class MemesVideoFragment : Fragment() {
                     }
 
                     list1.shuffle()
-                    adapter =
-                        VideoAdapter(requireContext(), list1, list)
-                    binding.memesView.adapter = adapter
+                    try {
+                        adapter =
+                            VideoAdapter(requireContext(), list1, list)
+                        binding.memesView.adapter = adapter
+
+                    }catch (e:Exception){
+
+                    }
 
 
                 }

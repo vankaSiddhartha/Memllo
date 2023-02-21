@@ -11,10 +11,10 @@
         android:id="@+id/playerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
+        android:layout_margin="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.225"
+        app:layout_constraintHorizontal_bias="0.0"
 
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -81,6 +81,7 @@
         android:id="@+id/video_heart_btn"
         android:layout_width="48dp"
         android:layout_height="48dp"
+        app:useMaterialThemeColors= "false"
         android:button="@drawable/hearta"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -136,5 +137,19 @@
         app:layout_constraintTop_toBottomOf="@+id/comments_count"
         app:layout_constraintVertical_bias="0.19999999"
         app:srcCompat="@drawable/share" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/follow_btn"
+        android:layout_width="69dp"
+        android:layout_height="27dp"
+        android:background="@drawable/fallowbtnback"
+        android:text="Follow"
+        android:textColor="@color/white"
+        android:textSize="8sp"
+        app:layout_constraintBottom_toBottomOf="@+id/video_view_user_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintStart_toEndOf="@+id/video_view_user_name"
+        app:layout_constraintTop_toTopOf="@+id/video_view_user_name" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

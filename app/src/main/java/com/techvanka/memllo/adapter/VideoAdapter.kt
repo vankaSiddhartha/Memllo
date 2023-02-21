@@ -24,6 +24,7 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.ktx.getValue
 import com.google.firebase.dynamiclinks.ktx.androidParameters
 import com.google.firebase.dynamiclinks.ktx.dynamicLink
 import com.google.firebase.dynamiclinks.ktx.dynamicLinks
@@ -32,6 +33,7 @@ import com.google.firebase.ktx.Firebase
 import com.techvanka.memllo.databinding.VideoItemBinding
 import com.techvanka.memllo.model.CommentDataClass
 import com.techvanka.memllo.model.Likes
+import com.techvanka.memllo.model.User
 import com.techvanka.memllo.model.VideoUploadModel
 import kotlinx.coroutines.*
 import java.io.File
@@ -57,11 +59,13 @@ class VideoAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-       var IntentId = "https://memllo.page.link?apn=com.techvanka.memllo&ibi=com.example.ios&link="
+
 
         Glide.with(context).load(list[position].CreatorProfile).into(holder.binding.userProfile)
 
-
+        if(holder.binding.followBtn.visibility==View.GONE){
+            holder.binding.followBtn.visibility = View.VISIBLE
+        }
         if (holder.binding.videoHeartBtn.isChecked) {
             holder.binding.videoHeartBtn.setChecked(false);
         }
@@ -91,7 +95,7 @@ class VideoAdapter(
                     }
 
                     override fun onLoadCleared(placeholder: Drawable?) {
-                        TODO("Not yet implemented")
+
                     }
 
 
@@ -192,6 +196,10 @@ class VideoAdapter(
             dialog.show()
 
         }
+        holder.binding.followBtn.setOnClickListener {
+            followBtnClick(holder.binding.followBtn,position)
+        }
+        followCheck(position,holder.binding.followBtn)
 
         holder.binding.share.setOnClickListener {
             val dynamicLink = Firebase.dynamicLinks.dynamicLink {
@@ -204,7 +212,12 @@ class VideoAdapter(
             }
 
             val dynamicLinkUri = dynamicLink.uri
-            Log.e("mess","${dynamicLinkUri}")
+            //Log.e("mess","${dynamicLinkUri}")
+            val shareIntent = Intent()
+            shareIntent.action = Intent.ACTION_SEND
+            shareIntent.type="text/plain"
+            shareIntent.putExtra(Intent.EXTRA_TEXT,dynamicLinkUri.toString());
+            context.startActivity(Intent.createChooser(shareIntent,"Send to"))
         }
 
     }
@@ -249,6 +262,7 @@ class VideoAdapter(
 
                 })
 
+
         }
 
 
@@ -257,43 +271,64 @@ class VideoAdapter(
             return list.size
         }
 
-        fun gib() {
-
-        }
-
-        fun getData(postion: Int) {
-            var listS = arrayListOf<CommentDataClass>()
-
-            val view: View = (context as FragmentActivity).layoutInflater.inflate(
-                listInt[0],
-                null
-            )
-            view.findViewById<RecyclerView>(listInt[1]).layoutManager =
-                LinearLayoutManager(view.context)
-            FirebaseDatabase.getInstance().getReference("Comments")
-                .child(list[postion].videoId.toString())
-                .addValueEventListener(object : ValueEventListener {
-
-                    override fun onDataChange(snapshot: DataSnapshot) {
-                        for (data in snapshot.children) {
-                            var get_data = data.getValue(CommentDataClass::class.java)
-                            if (get_data != null) {
-                                listS.add(get_data)
-                                // Toast.makeText(view.context, "$get_data", Toast.LENGTH_SHORT).show()
-                            }
-                        }
-
-                        //     view.findViewById<RecyclerView>(listInt[1]).adapter = CommentsAdapter(view.context ,listS,list[postion].videoLink)
-
+        fun followBtnClick(btn:Button,position: Int){
+            FirebaseDatabase.getInstance().getReference("User").child(FirebaseAuth.getInstance().currentUser!!.uid).addListenerForSingleValueEvent(object : ValueEventListener{
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    var data = snapshot.getValue(User::class.java)
+                    FirebaseDatabase.getInstance().getReference("Fallow").child(list[position].CreatorId.toString()).push().setValue(User(data?.name,data?.uid,data?.profile)).addOnSuccessListener {
+                        btn.visibility = View.GONE
                     }
+                }
 
-                    override fun onCancelled(error: DatabaseError) {
-                        Toast.makeText(view.context, "${error}", Toast.LENGTH_SHORT).show()
-                    }
+                override fun onCancelled(error: DatabaseError) {
 
-                })
+                }
+
+            })
+
 
 
         }
+    fun followCheck(position: Int,btn:Button){
+               try {
+                   FirebaseDatabase.getInstance().getReference("Fallow")
+                       .child(list[position].CreatorId.toString())
+                       .addValueEventListener(object : ValueEventListener {
+                           override fun onDataChange(snapshot: DataSnapshot) {
+
+                               for (idata in snapshot.children) {
+                                   
+                                   try {
+                                       var getData = idata.getValue(User::class.java)
+                                       if (FirebaseAuth.getInstance().currentUser?.uid.toString().equals(
+                                               getData?.uid.toString()
+                                           )
+
+                                       ) {
+                                           btn.visibility = View.GONE
+                                       }
+                                       break
+
+                                   } catch (e: Exception) {
+
+                                   }
+                               }
+
+
+
+                           }
+
+                           override fun onCancelled(error: DatabaseError) {
+
+                           }
+
+                       })
+               }catch (e:Exception){
+
+               }
+
+
+    }
+
     }
 

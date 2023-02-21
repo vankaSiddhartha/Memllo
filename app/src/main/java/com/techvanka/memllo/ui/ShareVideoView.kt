@@ -19,6 +19,11 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.google.firebase.dynamiclinks.ktx.androidParameters
+import com.google.firebase.dynamiclinks.ktx.dynamicLink
+import com.google.firebase.dynamiclinks.ktx.dynamicLinks
+import com.google.firebase.dynamiclinks.ktx.iosParameters
+import com.google.firebase.ktx.Firebase
 import com.techvanka.memllo.MainActivity
 import com.techvanka.memllo.R
 import com.techvanka.memllo.adapter.CommentsAdapter
@@ -41,7 +46,6 @@ class ShareVideoView : AppCompatActivity() {
         FirebaseDatabase.getInstance().getReference("Videos").child(getingVideoId!!).addListenerForSingleValueEvent(object :
             ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-
 
                     var getData = snapshot.getValue(VideoUploadModel::class.java)
 
@@ -71,6 +75,25 @@ class ShareVideoView : AppCompatActivity() {
 
 
                             })
+
+                binding.share.setOnClickListener {
+                    val dynamicLink = Firebase.dynamicLinks.dynamicLink {
+                        link = Uri.parse(getData?.videoId)
+                        domainUriPrefix = "https://memllo.page.link"
+                        // Open links with this app on Android
+                        androidParameters { }
+                        // Open links with com.example.ios on iOS
+                        iosParameters("com.example.ios") { }
+                    }
+
+                    val dynamicLinkUri = dynamicLink.uri
+                    //Log.e("mess","${dynamicLinkUri}")
+                    val shareIntent = Intent()
+                    shareIntent.action = Intent.ACTION_SEND
+                    shareIntent.type="text/plain"
+                    shareIntent.putExtra(Intent.EXTRA_TEXT,dynamicLinkUri.toString());
+                    startActivity(Intent.createChooser(shareIntent,"Send to"))
+                }
                 val view: View = (this@ShareVideoView as FragmentActivity).layoutInflater.inflate(
                     R.layout.fragment_comments_a,
                     null
