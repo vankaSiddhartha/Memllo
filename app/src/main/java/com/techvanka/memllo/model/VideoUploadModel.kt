@@ -9,8 +9,6 @@ data class VideoUploadModel (
     var CreatorId:String?=null,
     var CreatorName: String? = null,
     var CreatorProfile:String?=null,
-    var CreatorFallowers:Int=0,
-    var views:Int=0,
-var likes:Int=0
+    var list:ArrayList<String> = arrayListOf<String>()
 
         )

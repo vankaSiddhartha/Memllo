@@ -81,7 +81,7 @@ class EditProfile : AppCompatActivity() {
         FirebaseDatabase.getInstance().getReference("User").child(FirebaseAuth.getInstance().currentUser!!.uid).addListenerForSingleValueEvent(object :ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
                 var data = snapshot.getValue(User::class.java)
-                FirebaseDatabase.getInstance().getReference("User").child(FirebaseAuth.getInstance().currentUser!!.uid).setValue(User(userText.text.toString(),data!!.uid,data.profile,data.verified)).addOnSuccessListener {
+                FirebaseDatabase.getInstance().getReference("User").child(FirebaseAuth.getInstance().currentUser!!.uid).setValue(User(userText.text.toString(),data!!.uid,data.profile)).addOnSuccessListener {
                     binding.loadUpdate.visibility = View.GONE
                 }.addOnFailureListener {
                     binding.loadUpdate.visibility = View.GONE
@@ -103,7 +103,7 @@ class EditProfile : AppCompatActivity() {
             override fun onDataChange(snapshot: DataSnapshot) {
                 var data = snapshot.getValue(User::class.java)
                 FirebaseDatabase.getInstance().getReference("User").child(FirebaseAuth.getInstance().currentUser!!.uid).setValue(User(data!!.name,
-                    data.uid,img,data.verified)).addOnSuccessListener {
+                    data.uid,img)).addOnSuccessListener {
                     binding.loadUpdate.visibility = View.GONE
                 }.addOnFailureListener {
                     binding.loadUpdate.visibility = View.GONE

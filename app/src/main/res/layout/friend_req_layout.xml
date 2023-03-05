@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/friend_proflile"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_margin="10dp"
+        android:layout_marginStart="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        tools:srcCompat="@tools:sample/avatars" />
+    <TextView
+        android:id="@+id/user_tv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Vanka Siddhartha"
+        android:layout_marginLeft="5dp"
+        android:textSize ="17sp"
+        android:textStyle = "bold"
+        android:textColor = "@color/background_colour"
+        app:layout_constraintBottom_toBottomOf="@+id/friend_proflile"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/friend_proflile"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/accept_btn"
+        android:layout_width="49dp"
+        android:layout_height="48dp"
+        app:layout_constraintBottom_toBottomOf="@+id/friend_proflile"
+        app:layout_constraintEnd_toStartOf="@+id/decline_btn"
+        app:layout_constraintHorizontal_bias="0.88"
+        app:layout_constraintStart_toEndOf="@+id/friend_proflile"
+        app:layout_constraintTop_toTopOf="@+id/friend_proflile"
+        app:layout_constraintVertical_bias="0.51"
+        app:srcCompat="@drawable/check_foreground" />
+
+    <ImageView
+        android:id="@+id/decline_btn"
+        android:layout_width="49dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/friend_proflile"
+        app:layout_constraintEnd_toEndOf="@+id/user_tv"
+        app:layout_constraintTop_toTopOf="@+id/friend_proflile"
+        app:srcCompat="@drawable/no_foreground" />
+
+    <TextView
+        android:id="@+id/pendingText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="pending"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.84"
+        app:layout_constraintStart_toStartOf="@+id/user_tv"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

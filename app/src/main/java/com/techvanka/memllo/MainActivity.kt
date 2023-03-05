@@ -1,8 +1,11 @@
 package com.techvanka.memllo
 
 import android.app.ProgressDialog.show
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
@@ -18,8 +21,11 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.google.common.reflect.TypeToken
+import com.google.gson.Gson
 import com.techvanka.memllo.databinding.ActivityMainBinding
 import com.techvanka.memllo.fragments.*
+import org.json.JSONArray
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -30,6 +36,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         supportActionBar?.hide()
         LoadFrag(MemesVideoFragment())
+
+
+
        binding.navView.setOnItemSelectedListener { menuItem->
            when (menuItem.itemId){
               R.id.memesVideoFragment->{
@@ -76,6 +85,10 @@ class MainActivity : AppCompatActivity() {
         load.replace(R.id.nav_host_fragment_activity_main,fragment)
         load.commit()
     }
+
+
+
+
 
 
 

@@ -44,19 +44,34 @@
         android:textColor="@color/btn_text_colour"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.619"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/titleInput"
-        app:layout_constraintVertical_bias="0.243" />
+        app:layout_constraintVertical_bias="0.616" />
 
     <ProgressBar
         android:id="@+id/upload_pb"
         style="?android:attr/progressBarStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="67dp"
+        android:layout_height="43dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.32" />
+        app:layout_constraintVertical_bias="0.48" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/languageSetter"
+        android:layout_width="250dp"
+        android:layout_height="66dp"
+        android:text="Select Language of meme"
+        android:textColor="@color/btn_text_colour"
+        android:background="@drawable/btnbak"
+        app:layout_constraintBottom_toTopOf="@+id/Upload_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleInput"
+        app:layout_constraintVertical_bias="0.26" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

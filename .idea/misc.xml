@@ -5,6 +5,18 @@
       <map>
         <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/drawable-v24/btnbak.xml" value="0.157" />
         <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.157" />
+        <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/drawable-v24/ic_send_foreground.xml" value="0.17" />
+        <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/drawable/add_friend_background.xml" value="0.2005" />
+        <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/drawable/add_friend_foreground.xml" value="0.2005" />
+        <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/drawable/changeModebackground.xml" value="0.174" />
+        <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/drawable/changeText_background.xml" value="0.174" />
+        <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/drawable/changeText_foreground.xml" value="0.174" />
+        <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/drawable/changeText_mode.xml" value="0.174" />
+        <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/drawable/check_foreground.xml" value="0.2005" />
+        <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/drawable/close_background.xml" value="0.174" />
+        <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/drawable/close_foreground.xml" value="0.174" />
+        <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/drawable/edittext_background.xml" value="0.174" />
+        <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/drawable/edittext_foreground.xml" value="0.174" />
         <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/drawable/fallowbtnback.xml" value="0.1" />
         <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/drawable/follow_btn_back.xml" value="0.164" />
         <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/drawable/hearta.xml" value="0.1715" />
@@ -14,27 +26,58 @@
         <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/drawable/ic_baseline_favorite.xml" value="0.1715" />
         <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/drawable/ic_baseline_favorite_24.xml" value="0.1715" />
         <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/drawable/ic_baseline_favorite_border_24.xml" value="0.1715" />
+        <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/drawable/ic_home_background.xml" value="0.174" />
+        <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/drawable/ic_home_foreground.xml" value="0.174" />
+        <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/drawable/ic_inbox_background.xml" value="0.174" />
+        <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/drawable/ic_inbox_foreground.xml" value="0.174" />
         <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/drawable/ic_launcher_background.xml" value="0.157" />
         <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/drawable/ic_market_background.xml" value="0.1" />
         <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/drawable/ic_shorts_background.xml" value="0.1715" />
         <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/drawable/ic_shorts_foreground.xml" value="0.1715" />
         <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/drawable/like_heart.xml" value="0.1715" />
+        <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/drawable/likedimg_background.xml" value="0.174" />
+        <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/drawable/likedimg_foreground.xml" value="0.174" />
+        <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/drawable/mode_background.xml" value="0.2005" />
+        <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/drawable/myvideosicon_foreground.xml" value="0.2005" />
+        <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/drawable/no_foreground.xml" value="0.2005" />
+        <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/drawable/notifications_foreground.xml" value="0.2005" />
         <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/drawable/rounded_corner.xml" value="0.1715" />
+        <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/drawable/search_background.xml" value="0.2005" />
+        <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/drawable/search_foreground.xml" value="0.2005" />
+        <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/drawable/text_sms_background.xml" value="0.2005" />
+        <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/drawable/text_sms_foreground.xml" value="0.2005" />
         <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/drawable/user_img_background.xml" value="0.1" />
         <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/drawable/user_img_foreground.xml" value="0.1" />
+        <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/drawable/user_rupees_background.xml" value="0.164" />
+        <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/drawable/user_rupees_foreground.xml" value="0.164" />
+        <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/drawable/user_send_background.xml" value="0.1805" />
+        <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/drawable/user_send_foreground.xml" value="0.164" />
         <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/layout-v26/shop_item_list_layout.xml" value="0.2" />
-        <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/layout/activity_create_account.xml" value="0.21666666666666667" />
+        <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/layout/account_layout.xml" value="0.264" />
+        <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/layout/activity_cart_show.xml" value="0.1984375" />
+        <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/layout/activity_chating.xml" value="0.152" />
+        <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/layout/activity_create_account.xml" value="0.2" />
+        <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/layout/activity_creator_dash_board.xml" value="0.21666666666666667" />
         <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/layout/activity_edit_profile.xml" value="0.21666666666666667" />
+        <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/layout/activity_friend_request.xml" value="0.21666666666666667" />
+        <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/layout/activity_friends_chat.xml" value="0.21666666666666667" />
+        <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/layout/activity_get_money.xml" value="0.21666666666666667" />
+        <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/layout/activity_intent_link.xml" value="0.21666666666666667" />
+        <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/layout/activity_language_select.xml" value="0.21666666666666667" />
         <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/layout/activity_main.xml" value="0.1984375" />
+        <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/layout/activity_messaging.xml" value="0.21666666666666667" />
+        <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/layout/activity_product_track.xml" value="0.21666666666666667" />
         <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/layout/activity_share_link_ui.xml" value="0.21666666666666667" />
         <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/layout/activity_share_video_view.xml" value="0.21666666666666667" />
+        <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/layout/activity_shop_item_view.xml" value="0.176" />
         <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/layout/activity_sign_in.xml" value="0.21666666666666667" />
         <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/layout/activity_splash_screen.xml" value="0.21666666666666667" />
         <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/layout/activity_upload_video.xml" value="0.21666666666666667" />
         <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/layout/activity_video_list.xml" value="0.21666666666666667" />
         <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/layout/activity_videos.xml" value="0.21666666666666667" />
         <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/layout/comments_layout.xml" value="0.21666666666666667" />
-        <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/layout/comments_list.xml" value="0.4" />
+        <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/layout/comments_list.xml" value="0.527681660899654" />
+        <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/layout/dash_board_item.xml" value="0.264" />
         <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/layout/fragment_account.xml" value="0.264" />
         <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/layout/fragment_comments_a.xml" value="0.264" />
         <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/layout/fragment_home.xml" value="0.21666666666666667" />
@@ -42,12 +85,26 @@
         <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/layout/fragment_memes.xml" value="0.21666666666666667" />
         <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/layout/fragment_memes_market.xml" value="0.13279132791327913" />
         <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/layout/fragment_upload.xml" value="0.21666666666666667" />
+        <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/layout/friend_layout.xml" value="0.215625" />
+        <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/layout/friend_req_layout.xml" value="0.4" />
+        <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/layout/layout_anguage.xml" value="0.215625" />
+        <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/layout/layout_language.xml" value="0.264" />
+        <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/layout/message_item.xml" value="0.21666666666666667" />
+        <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/layout/recive_layout.xml" value="0.264" />
+        <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/layout/search_dailog_view.xml" value="0.264" />
+        <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/layout/sent_layout.xml" value="0.264" />
         <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/layout/shop_item_list_layout.xml" value="0.21666666666666667" />
-        <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/layout/shop_items_layout.xml" value="0.21666666666666667" />
-        <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/layout/video_item.xml" value="0.264" />
+        <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/layout/shop_items_layout.xml" value="0.4" />
+        <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/layout/shoping_dailog_layout.xml" value="0.264" />
+        <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/layout/track_product.xml" value="0.215625" />
+        <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/layout/user_card_layout.xml" value="0.2" />
+        <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/layout/user_profile.xml" value="0.215625" />
+        <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/layout/video_item.xml" value="0.2" />
         <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/layout/video_list.xml" value="0.4" />
         <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/layout/videos_layout.xml" value="0.1" />
         <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/menu/menu.xml" value="0.4" />
+        <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/mipmap-anydpi-v26/changeMode.xml" value="0.174" />
+        <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/mipmap-anydpi-v26/myvideosIcon.xml" value="0.1" />
         <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/mipmap-anydpi-v26/user_img.xml" value="0.1" />
         <entry key="..\:/Users/lenovo/AndroidStudioProjects/Memllo/app/src/main/res/mipmap-anydpi-v26/user_img_round.xml" value="0.1" />
       </map>

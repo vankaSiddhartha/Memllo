@@ -30,7 +30,7 @@ class SplashScreen : AppCompatActivity() {
 
             } else
              {
-                startActivity(Intent(this, SignIn::class.java))
+                startActivity(Intent(this, CreateAccount::class.java))
                 finish()
             }
         }, 1000)

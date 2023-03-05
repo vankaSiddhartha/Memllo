@@ -8,7 +8,8 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
+android:layout_margin="3dp"
+        app:cardBackgroundColor="@color/btn_text_colour"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -24,28 +25,50 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="TextView"
+                android:layout_marginLeft="3dp"
+                android:textColor="@color/background_colour"
                 android:textSize="10sp"
                 android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/mediumCard"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/mediumCard"
+                app:layout_constraintTop_toTopOf="@+id/mediumCard" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/mediumCard"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                app:cardCornerRadius="2dp"
+
+                android:layout_marginLeft="3dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.07"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.206" />
+                app:layout_constraintVertical_bias="0.07999998">
+
+                <ImageView
+                    android:id="@+id/profile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/user_account_foreground" />
+            </androidx.cardview.widget.CardView>
 
             <TextView
                 android:id="@+id/comment_text"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5sp"
                 android:text="TextView"
+                android:textColor = "@color/background_colour"
                 android:textSize="16sp"
-                android:layout_margin="10dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.045"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/userName"
                 app:layout_constraintTop_toBottomOf="@+id/userName"
-                app:layout_constraintVertical_bias="0.203" />
+                app:layout_constraintVertical_bias="0.0" />
 
 
 
