@@ -11,10 +11,10 @@
         android:id="@+id/playerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
+        android:layout_margin="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.225"
+        app:layout_constraintHorizontal_bias="0.0"
 
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -31,9 +31,9 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView3"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        app:cardCornerRadius="40dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:cardCornerRadius="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.09"
@@ -42,11 +42,23 @@
         app:layout_constraintVertical_bias="0.92">
 
 
-        <ImageView
-            android:id="@+id/userProfile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/user_account_foreground" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/userProfile"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/user_account_foreground" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
     <TextView
@@ -57,10 +69,10 @@
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="@+id/cardView3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.036"
+        app:layout_constraintHorizontal_bias="0.0"
+        android:layout_marginLeft="2dp"
         app:layout_constraintStart_toEndOf="@+id/cardView3"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.98" />
+        app:layout_constraintTop_toTopOf="@+id/cardView3" />
 
     <TextView
         android:id="@+id/view_view_video_title"
@@ -81,6 +93,7 @@
         android:id="@+id/video_heart_btn"
         android:layout_width="48dp"
         android:layout_height="48dp"
+        app:useMaterialThemeColors= "false"
         android:button="@drawable/hearta"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -90,11 +103,11 @@
 
     <ImageView
         android:id="@+id/video_list_comment"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.89"
+        app:layout_constraintHorizontal_bias="0.88"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/video_heart_btn"
         app:layout_constraintVertical_bias="0.13"
@@ -136,5 +149,19 @@
         app:layout_constraintTop_toBottomOf="@+id/comments_count"
         app:layout_constraintVertical_bias="0.19999999"
         app:srcCompat="@drawable/share" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/follow_btn"
+        android:layout_width="69dp"
+        android:layout_height="27dp"
+        android:background="@drawable/fallowbtnback"
+        android:text="Follow"
+        android:textColor="@color/white"
+        android:textSize="8sp"
+        app:layout_constraintBottom_toBottomOf="@+id/video_view_user_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintStart_toEndOf="@+id/video_view_user_name"
+        app:layout_constraintTop_toTopOf="@+id/video_view_user_name" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

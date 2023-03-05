@@ -16,7 +16,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:labelVisibilityMode="labeled"
         app:layout_constraintLeft_toLeftOf="parent"
-
+        android:background = "@color/btn_text_colour"
         app:layout_constraintRight_toRightOf="parent"
         app:menu="@menu/menu" />
 

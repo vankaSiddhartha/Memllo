@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -27,7 +28,9 @@ class CommentsAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
        holder.binding.commentText.text = data[position].text
-        holder.binding.userName.text = "Random User"
+        holder.binding.userName.text = data[position].name
+        Glide.with(context).load(data[position].profile).into(holder.binding.profile)
+
         //data.clear()
       //  Toast.makeText(context, "vhhvhb", Toast.LENGTH_SHORT).show()
 

@@ -22,6 +22,30 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".ui.FriendsChatActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.FriendRequestActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.ChatingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.CartShowActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.ProductTrackActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.ShopItemView"
+            android:exported="false" />
+        <activity
+            android:name=".ui.GetMoneyActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.CreatorDashBoard"
+            android:exported="false" />
+        <activity
             android:name=".ui.ShareVideoView"
             android:exported="false" />
         <activity
@@ -53,13 +77,8 @@
             android:name=".ui.CreateAccount"
             android:exported="false" />
         <activity
-            android:name=".ui.SignIn"
-            android:exported="false" />
-        <activity
             android:name=".MainActivity"
-            android:exported="false">
-
-        </activity>
+            android:exported="false" />
     </application>
 
 </manifest>

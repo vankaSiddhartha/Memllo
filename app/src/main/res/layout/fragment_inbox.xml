@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background = "@color/btn_text_colour"
     android:layout_height="match_parent"
     tools:context=".fragments.InboxFragment">
 
@@ -10,15 +11,71 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/textView5"
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/UserViewPager"
             android:layout_width="wrap_content"
+            android:layout_margin="20dp"
             android:layout_height="wrap_content"
-            android:text="Inbox"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView19"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="Discover"
+            android:textColor="@color/background_colour"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/UserViewPager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.048" />
+
+        <ImageView
+            android:id="@+id/my_chat_btn"
+            android:layout_width="53dp"
+            android:layout_height="58dp"
+            android:layout_marginEnd="32dp"
+            android:src="@drawable/text_sms_foreground"
+            app:layout_constraintBottom_toBottomOf="@+id/textView19"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/search_btn"
+            app:layout_constraintTop_toTopOf="@+id/textView19"
+            app:layout_constraintVertical_bias="0.342" />
+
+        <ImageView
+            android:id="@+id/search_btn"
+            android:layout_width="53dp"
+            android:layout_height="58dp"
+            android:layout_marginStart="140dp"
+            android:src="@drawable/search_foreground"
+            app:layout_constraintBottom_toBottomOf="@+id/textView19"
+            app:layout_constraintEnd_toStartOf="@+id/my_chat_btn"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/textView19"
+            app:layout_constraintTop_toTopOf="@+id/textView19"
+            app:layout_constraintVertical_bias="0.35" />
+
+        <ImageView
+            android:id="@+id/search_btn2"
+            android:layout_width="53dp"
+            android:layout_height="58dp"
+            android:src="@drawable/notifications_foreground"
+            app:layout_constraintBottom_toBottomOf="@+id/textView19"
+            app:layout_constraintEnd_toStartOf="@+id/search_btn"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/textView19"
+            app:layout_constraintTop_toTopOf="@+id/textView19"
+            app:layout_constraintVertical_bias="0.35" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
