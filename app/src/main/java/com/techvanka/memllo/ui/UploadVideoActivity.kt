@@ -1,6 +1,8 @@
 package com.techvanka.memllo.ui
 
+import android.content.pm.PackageManager
 import android.net.Uri
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -16,6 +18,12 @@ import com.techvanka.memllo.databinding.ActivityUploadVideoBinding
 import com.techvanka.memllo.databinding.LayoutLanguageBinding
 import com.techvanka.memllo.model.VideoUploadModel
 import java.util.*
+import android.app.NotificationManager
+import android.content.Context
+import android.content.Intent
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.app.NotificationCompat
+import com.techvanka.memllo.MainActivity
 
 class UploadVideoActivity : AppCompatActivity() {
     private var CODEENG=0
@@ -33,6 +41,8 @@ class UploadVideoActivity : AppCompatActivity() {
         binding = ActivityUploadVideoBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.uploadPb.visibility = View.GONE
+        val context = this
+
         Glide.with(this).load(intent.getStringExtra("imgLink")).into(binding.uploadImgView)
        binding.languageSetter.setOnClickListener {
            Toast.makeText(this, "lol", Toast.LENGTH_SHORT).show()
@@ -73,8 +83,9 @@ class UploadVideoActivity : AppCompatActivity() {
         )
         FirebaseDatabase.getInstance().getReference("Videos").child(videoId).setValue(VideoData)
             .addOnSuccessListener {
-                FirebaseDatabase.getInstance().getReference("MyVideo").child(FirebaseAuth.getInstance().currentUser!!.uid).setValue(VideoData).addOnSuccessListener {
+                FirebaseDatabase.getInstance().getReference("MyVideo").child(FirebaseAuth.getInstance().currentUser!!.uid).push().setValue(VideoData).addOnSuccessListener {
                     binding.uploadPb.visibility = View.GONE
+                    startActivity(Intent(this@UploadVideoActivity,MainActivity::class.java))
                 }
 
 
@@ -101,8 +112,8 @@ class UploadVideoActivity : AppCompatActivity() {
                 list.remove("tel")
                 bindingVIEW.teluguCard.setCardBackgroundColor(
                     ContextCompat.getColor(applicationContext,
-                    R.color.white
-                ))
+                        R.color.background_colour
+                    ))
 
             }
             CODETEL++
@@ -118,8 +129,9 @@ class UploadVideoActivity : AppCompatActivity() {
                 list.remove("hin")
                 bindingVIEW.HindiCard.setCardBackgroundColor(
                     ContextCompat.getColor(applicationContext,
-                    R.color.white
-                ))
+                        R.color.background_colour
+                    ))
+
 
             }
             CODEHIN++
@@ -139,8 +151,9 @@ class UploadVideoActivity : AppCompatActivity() {
                 list.remove("tamil")
                 bindingVIEW.tamilCard.setCardBackgroundColor(
                     ContextCompat.getColor(applicationContext,
-                    R.color.white
-                ))
+                        R.color.background_colour
+                    ))
+
 
             }
             CODETAM++
@@ -159,8 +172,9 @@ class UploadVideoActivity : AppCompatActivity() {
                 list.remove("eng")
                 bindingVIEW.EnglishCard.setCardBackgroundColor(
                     ContextCompat.getColor(applicationContext,
-                    R.color.white
-                ))
+                        R.color.background_colour
+                    ))
+
 
             }
             CODEENG++
@@ -172,13 +186,16 @@ class UploadVideoActivity : AppCompatActivity() {
                 list.add("ben")
                 bindingVIEW.bengaliCard.setCardBackgroundColor(
                     ContextCompat.getColor(applicationContext,
-                    R.color.teal_200))
+                        R.color.teal_200
+                    ))
+
             }else{
                 list.remove("ben")
                 bindingVIEW.bengaliCard.setCardBackgroundColor(
                     ContextCompat.getColor(applicationContext,
-                    R.color.white
-                ))
+                        R.color.background_colour
+                    ))
+
 
             }
             CODEBANGLA++
@@ -194,7 +211,7 @@ class UploadVideoActivity : AppCompatActivity() {
                 list.remove("mar")
                 bindingVIEW.MarathiCard.setCardBackgroundColor(
                     ContextCompat.getColor(applicationContext,
-                    R.color.white
+                    R.color.background_colour
                 ))
 
             }
@@ -204,6 +221,7 @@ class UploadVideoActivity : AppCompatActivity() {
         bindingVIEW.continueBtn.setOnClickListener {
             binding.uploadPb.visibility = View.VISIBLE
             uploadData(intent.getStringExtra("imgLink"),list)
+            dialog.hide()
         }
 
 

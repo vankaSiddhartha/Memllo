@@ -6,9 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
+import com.techvanka.memllo.databinding.CancelAlertDailogBinding
+import com.techvanka.memllo.databinding.LayoutLanguageBinding
 import com.techvanka.memllo.databinding.TrackProductBinding
 import com.techvanka.memllo.model.OrderItemModel
 import com.techvanka.memllo.ui.ShopItemView
@@ -41,19 +46,37 @@ class OrderAdapter(var context: Context, var list:ArrayList<OrderItemModel>):Rec
             holder.binding.comment.visibility = View.VISIBLE
         }
         holder.binding.closeBtn.setOnClickListener {
-            holder.binding.card.visibility =  View.GONE
-            val db = FirebaseFirestore.getInstance()
-            val collectionRef = db.collection("BoughtProducts")
-            val query = collectionRef.whereEqualTo("productId", list[position].productId)
-            query.get()
-                .addOnSuccessListener { documents ->
-                    for (document in documents) {
-                        document.reference.delete()
-                    }
-                }
-                .addOnFailureListener { exception ->
-                    Toast.makeText(context, "$exception", Toast.LENGTH_SHORT).show()
-                }
+
+            val builder = AlertDialog.Builder(context)
+            var bindingVIEW = CancelAlertDailogBinding.inflate(LayoutInflater.from(context))
+            builder.setView(bindingVIEW.root)
+            val dialog = builder.create()
+            dialog.show()
+            bindingVIEW.cancelBtn.setOnClickListener {
+                    val db = Firebase.firestore
+                    db.collection("CancelList").add(list[position])
+                        .addOnSuccessListener { documentReference ->
+                            dialog.hide()
+                            holder.binding.card.visibility =  View.GONE
+                            val db = FirebaseFirestore.getInstance()
+                            val collectionRef = db.collection("BoughtProducts")
+                            val query = collectionRef.whereEqualTo("productId", list[position].productId)
+                            query.get()
+                                .addOnSuccessListener { documents ->
+                                    for (document in documents) {
+                                        document.reference.delete()
+                                    }
+                                }
+                                .addOnFailureListener { exception ->
+                                    Toast.makeText(context, "$exception", Toast.LENGTH_SHORT).show()
+                                    dialog.hide()
+                                }
+                        }
+                        .addOnFailureListener { e ->
+                            Toast.makeText(context, e.toString(), Toast.LENGTH_SHORT).show()
+                        }
+
+            }
         }
     }
 

@@ -5,5 +5,6 @@ data class FriendRequestModel(
     var uid:String?=null,
     var profile:String?=null,
     var name:String?=null,
-    var reqUid:String?=null
+    var reqUid:String?=null,
+    var fcmToken:String?=null
 )

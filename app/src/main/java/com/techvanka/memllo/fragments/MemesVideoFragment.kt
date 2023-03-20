@@ -2,21 +2,19 @@ package com.techvanka.memllo.fragments
 
 
 import android.content.Context
-import android.content.Context.MODE_PRIVATE
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.os.Process.killProcess
+import com.techvanka.memllo.model.*
 import android.os.SystemClock
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Chronometer
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.exoplayer2.ExoPlayer
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -27,8 +25,6 @@ import com.techvanka.memllo.databinding.FragmentMemesBinding
 import com.techvanka.memllo.model.ExoPlayerItem
 import com.techvanka.memllo.model.VideoModel
 import com.techvanka.memllo.model.VideoUploadModel
-import com.techvanka.memllo.roomDB.Model
-import com.techvanka.memllo.roomDB.VideoStorageHope
 import kotlinx.coroutines.*
 import org.json.JSONArray
 import java.util.*
@@ -51,13 +47,14 @@ class MemesVideoFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         sharedPreferences = requireContext().getSharedPreferences("MyPreferences", Context.MODE_PRIVATE)
         chronometer = Chronometer(context)
         // Start the chronometer
         chronometer.start()
 
         val username = sharedPreferences.getString("time", "default_username")
-        Toast.makeText(context, "$username", Toast.LENGTH_SHORT).show()
+       // Toast.makeText(context, "$username", Toast.LENGTH_SHORT).show()
         //Toast.makeText(requireContext(), "$elapsedTime", Toast.LENGTH_SHORT).show()
 
 
@@ -76,7 +73,7 @@ class MemesVideoFragment : Fragment() {
             requireContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
         val json = prefs.getString("list", null)
 
-    GlobalScope.launch {
+        CoroutineScope(Dispatchers.Default).launch{
         FirebaseDatabase.getInstance().getReference("Videos")
             .addValueEventListener(object : ValueEventListener {
                 var intentUriList = arrayListOf<VideoUploadModel>()
@@ -104,12 +101,15 @@ class MemesVideoFragment : Fragment() {
 
                                 list1.add(data)
                             }
+                        }else{
+
                         }
 
 
                     }
 
                     list1.shuffle()
+
                     try {
                         adapter =
                             VideoAdapter(requireContext(), list1, list)
@@ -191,7 +191,7 @@ class MemesVideoFragment : Fragment() {
             editor.remove("time")
             editor.putString("time",tim.toString())
             editor.apply()
-            Toast.makeText(requireContext(), "$tim", Toast.LENGTH_SHORT).show()
+          //  Toast.makeText(requireContext(), "$tim", Toast.LENGTH_SHORT).show()
         }
         timerTask?.cancel()
         timer?.cancel()
@@ -223,7 +223,7 @@ class MemesVideoFragment : Fragment() {
             editor.remove("time")
             editor.putString("time",tim.toString())
             editor.apply()
-            Toast.makeText(requireContext(), "$tim", Toast.LENGTH_SHORT).show()
+           // Toast.makeText(requireContext(), "$tim", Toast.LENGTH_SHORT).show()
         }
     }
 
