@@ -164,4 +164,27 @@
         app:layout_constraintStart_toEndOf="@+id/video_view_user_name"
         app:layout_constraintTop_toTopOf="@+id/video_view_user_name" />
 
+    <ImageView
+        android:id="@+id/play"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/playerView"
+        app:layout_constraintEnd_toEndOf="@+id/playerView"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="@+id/playerView"
+        app:layout_constraintTop_toTopOf="@+id/playerView"
+        app:layout_constraintVertical_bias="0.499"
+        app:srcCompat="@drawable/pause_foreground" />
+
+    <ImageView
+        android:id="@+id/pause"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/playerView"
+        app:layout_constraintEnd_toEndOf="@+id/playerView"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="@+id/playerView"
+        app:layout_constraintTop_toTopOf="@+id/playerView"
+        app:srcCompat="@drawable/pauses_foreground" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

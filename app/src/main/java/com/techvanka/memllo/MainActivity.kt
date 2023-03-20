@@ -3,10 +3,13 @@ package com.techvanka.memllo
 import android.app.ProgressDialog.show
 import android.content.Context
 import android.content.SharedPreferences
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import androidx.core.text.HtmlCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
@@ -37,7 +40,10 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.hide()
         LoadFrag(MemesVideoFragment())
 
-
+        var title = "Memllo"
+        supportActionBar?.setBackgroundDrawable( ColorDrawable( ContextCompat.getColor(this, R.color.btn_text_colour)))
+        val titleColor = ContextCompat.getColor(this, R.color.background_colour)
+        supportActionBar?.title = HtmlCompat.fromHtml("<font color='$titleColor'>${title}</font>", HtmlCompat.FROM_HTML_MODE_LEGACY)
 
        binding.navView.setOnItemSelectedListener { menuItem->
            when (menuItem.itemId){
@@ -45,10 +51,7 @@ class MainActivity : AppCompatActivity() {
                   LoadFrag(MemesVideoFragment())
                   true
               }
-               R.id.inboxFragment->{
-                   LoadFrag(InboxFragment())
-                   true
-               }
+
                R.id.uploadFragment->{
                    UploadFragment().show(supportFragmentManager,"UploadFragment")
                    true

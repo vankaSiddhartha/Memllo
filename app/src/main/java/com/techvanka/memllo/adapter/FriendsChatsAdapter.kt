@@ -28,6 +28,7 @@ class FriendsChatsAdapter(var context: Context,var list:ArrayList<FriendRequestM
             var intent = Intent(context,ChatingActivity::class.java)
             intent.putExtra("name",list[position].name)
             intent.putExtra("rid",list[position].uid)
+            intent.putExtra("fcm",list[position].fcmToken)
             context.startActivity(intent)
         }
     }

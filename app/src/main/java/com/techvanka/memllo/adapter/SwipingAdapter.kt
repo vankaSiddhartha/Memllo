@@ -20,7 +20,7 @@ class SwipingAdapter(var context: Context,var list:ArrayList<User>):RecyclerView
     class ViewHolder(var binding:UserCardLayoutBinding):RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-     var view = UserCardLayoutBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+        var view = UserCardLayoutBinding.inflate(LayoutInflater.from(parent.context),parent,false)
         return ViewHolder(view)
     }
 
@@ -30,8 +30,8 @@ class SwipingAdapter(var context: Context,var list:ArrayList<User>):RecyclerView
         }
 
 
-          var data = FriendRequestModel("false",FirebaseAuth.getInstance().currentUser!!.uid,FirebaseAuth.getInstance().currentUser!!.photoUrl.toString(),FirebaseAuth.getInstance().currentUser!!.displayName,FirebaseAuth.getInstance().currentUser!!.uid)
-          var Frienddata = FriendRequestModel("false",list[position].uid,list[position].profile,list[position].name,FirebaseAuth.getInstance().currentUser!!.uid)
+          var data = FriendRequestModel("false",FirebaseAuth.getInstance().currentUser!!.uid,FirebaseAuth.getInstance().currentUser!!.photoUrl.toString(),FirebaseAuth.getInstance().currentUser!!.displayName,FirebaseAuth.getInstance().currentUser!!.uid,list[position].fcmToken)
+          var Frienddata = FriendRequestModel("false",list[position].uid,list[position].profile,list[position].name,FirebaseAuth.getInstance().currentUser!!.uid,list[position].fcmToken)
           holder.binding.friendRequestBtn.setOnClickListener {
               FirebaseDatabase.getInstance().getReference("FriendRequest").child(list[position].uid.toString())
                   .child(FirebaseAuth.getInstance().currentUser!!.uid).setValue(data).addOnSuccessListener {

@@ -2,6 +2,7 @@ package com.techvanka.memllo.fragments
 
 import android.content.Intent
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.annotation.RequiresApi
 import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.techvanka.memllo.databinding.FragmentUploadBinding
@@ -21,6 +23,7 @@ class UploadFragment :BottomSheetDialogFragment() {
   private lateinit var permission:ActivityResultLauncher<String>
   private var isGiven = false
    private var list:ArrayList<String> = arrayListOf()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -28,7 +31,13 @@ class UploadFragment :BottomSheetDialogFragment() {
         binding= FragmentUploadBinding.inflate(inflater,container,false)
         binding.uploadTv.setOnClickListener {
 
-            readExternalPermissionContract.launch(android.Manifest.permission.READ_EXTERNAL_STORAGE)
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                    readExternalPermissionContract.launch(android.Manifest.permission.READ_MEDIA_VIDEO)
+                }else{
+                    readExternalPermissionContract.launch(android.Manifest.permission.READ_EXTERNAL_STORAGE)
+                }
+
 
         }
 

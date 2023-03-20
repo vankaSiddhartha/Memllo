@@ -16,11 +16,13 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
+import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.messaging.FirebaseMessaging
 import com.google.gson.Gson
 import com.techvanka.memllo.MainActivity
 import com.techvanka.memllo.R
@@ -177,14 +179,25 @@ class CreateAccount : AppCompatActivity() {
             val jsonArray = JSONArray(list)
             editor.putString("list", jsonArray.toString())
             editor.apply()
+            FirebaseMessaging.getInstance().token
+                .addOnCompleteListener(OnCompleteListener { task ->
+                    if (!task.isSuccessful) {
 
-            FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().currentUser!!.uid)
-                .setValue(User(FirebaseAuth.getInstance().currentUser!!.displayName,FirebaseAuth.getInstance().currentUser!!.uid,FirebaseAuth.getInstance().currentUser!!.photoUrl.toString(),list)).addOnSuccessListener {
-                    binding.createUserPb.visibility =View.GONE
+                        return@OnCompleteListener
+                    }
 
-                    Toast.makeText(this, "Welcome to Memllo", Toast.LENGTH_SHORT).show()
-                    startActivity(Intent(this,MainActivity::class.java))
-                }
+                    // Get new Instance ID token
+                    val token = task.result
+                    FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().currentUser!!.uid)
+                        .setValue(User(FirebaseAuth.getInstance().currentUser!!.displayName,FirebaseAuth.getInstance().currentUser!!.uid,FirebaseAuth.getInstance().currentUser!!.photoUrl.toString(),list,token)).addOnSuccessListener {
+                            binding.createUserPb.visibility =View.GONE
+
+                            Toast.makeText(this, "Welcome to Memllo", Toast.LENGTH_SHORT).show()
+                            startActivity(Intent(this,MainActivity::class.java))
+                        }
+                })
+
+
 
             Toast.makeText(this, "$list", Toast.LENGTH_SHORT).show()
         }
@@ -226,8 +239,8 @@ class CreateAccount : AppCompatActivity() {
 
                 } else {
                     binding.createUserPb.visibility =View.GONE
-                    Toast.makeText(this, "Welcome to Memllo", Toast.LENGTH_SHORT).show()
-                    startActivity(Intent(this,MainActivity::class.java))
+                    showDailog()
+
 
 
                 }

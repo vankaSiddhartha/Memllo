@@ -34,16 +34,16 @@ class CreatorDashBoard : AppCompatActivity() {
         binding = ActivityCreatorDashBoardBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.dashnoardRv.layoutManager = LinearLayoutManager(this)
-        FirebaseDatabase.getInstance().getReference("MyVideos").child(FirebaseAuth.getInstance().currentUser!!.uid).addValueEventListener(object : ValueEventListener{
+        FirebaseDatabase.getInstance().getReference("MyVideo").child(FirebaseAuth.getInstance().currentUser!!.uid).addValueEventListener(object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
                 var allData = snapshot.children
                 for(data in allData) {
-                    var getValue = data.getValue(VideoUploadModel::class.java)
-
+                   var getValue = data.getValue(VideoUploadModel::class.java)
+                    ///Toast.makeText(this@CreatorDashBoard, "${data}", Toast.LENGTH_SHORT).show()
                     list.add(getValue!!)
 
                 }
-                binding.dashnoardRv.adapter = DashboardAdapter(this@CreatorDashBoard, list)
+               binding.dashnoardRv.adapter = DashboardAdapter(this@CreatorDashBoard, list)
             }
 
             override fun onCancelled(error: DatabaseError) {

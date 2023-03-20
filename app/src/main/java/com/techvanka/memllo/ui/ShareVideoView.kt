@@ -1,232 +1,90 @@
 package com.techvanka.memllo.ui
 
+import android.content.Context
 import android.content.Intent
-import android.graphics.drawable.Drawable
-import android.net.Uri
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import android.widget.*
-import androidx.fragment.app.FragmentActivity
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.bumptech.glide.request.target.CustomTarget
-import com.bumptech.glide.request.transition.Transition
-import com.google.android.material.bottomsheet.BottomSheetDialog
-import com.google.firebase.auth.FirebaseAuth
+import android.widget.Toast
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import com.google.firebase.dynamiclinks.ktx.androidParameters
-import com.google.firebase.dynamiclinks.ktx.dynamicLink
-import com.google.firebase.dynamiclinks.ktx.dynamicLinks
-import com.google.firebase.dynamiclinks.ktx.iosParameters
-import com.google.firebase.ktx.Firebase
 import com.techvanka.memllo.MainActivity
 import com.techvanka.memllo.R
-import com.techvanka.memllo.adapter.CommentsAdapter
+import com.techvanka.memllo.adapter.VideoAdapter
 import com.techvanka.memllo.databinding.ActivityShareVideoViewBinding
-import com.techvanka.memllo.model.CommentDataClass
-import com.techvanka.memllo.model.Likes
 import com.techvanka.memllo.model.VideoUploadModel
-import java.io.File
+import org.json.JSONArray
 
-class ShareVideoView : AppCompatActivity() {
+class  ShareVideoView : AppCompatActivity() {
     private lateinit var binding:ActivityShareVideoViewBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityShareVideoViewBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        var list = arrayListOf<Int>()
+        list.add(R.layout.fragment_comments_a)
+        list.add(R.id.comment_rv)
+        list.add(R.id.comments_et)
+        list.add(R.id.comments_sendbtn)
         var IntentId = "https://memllo.page.link?apn=com.techvanka.memllo&ibi=com.example.ios&link="
         var comments_count=0
+        val prefs: SharedPreferences =
+            this.getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
+        val json = prefs.getString("list", null)
         var getingVideoId = intent.getStringExtra("id")
          getingVideoId = getingVideoId?.replace(IntentId,"")
-        FirebaseDatabase.getInstance().getReference("Videos").child(getingVideoId!!).addListenerForSingleValueEvent(object :
-            ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-
-                    var getData = snapshot.getValue(VideoUploadModel::class.java)
-
-
-
-                        binding.viewViewVideoTitle.text = getData?.videoTitle
-                        Glide.with(this@ShareVideoView).asFile().load(getData?.videoLink)
-                            .into(object : CustomTarget<File?>() {
-                                override fun onResourceReady(
-                                    resource: File,
-                                    transition: Transition<in File?>?
-                                ) {
-                                    val uri = Uri.fromFile(resource)
-
-                                   binding.playerView1.setVideoURI(uri)
-                                  binding.playerView1.setOnPreparedListener {
-                                        it.isLooping = true
-                                        it.start()
-                                      binding.pbLoading.visibility = View.GONE
-                                    }
-
-                                }
-
-                                override fun onLoadCleared(placeholder: Drawable?) {
-
-                                }
-
-
-                            })
-
-                binding.share.setOnClickListener {
-                    val dynamicLink = Firebase.dynamicLinks.dynamicLink {
-                        link = Uri.parse(getData?.videoId)
-                        domainUriPrefix = "https://memllo.page.link"
-                        // Open links with this app on Android
-                        androidParameters { }
-                        // Open links with com.example.ios on iOS
-                        iosParameters("com.example.ios") { }
-                    }
-
-                    val dynamicLinkUri = dynamicLink.uri
-                    //Log.e("mess","${dynamicLinkUri}")
-                    val shareIntent = Intent()
-                    shareIntent.action = Intent.ACTION_SEND
-                    shareIntent.type="text/plain"
-                    shareIntent.putExtra(Intent.EXTRA_TEXT,dynamicLinkUri.toString());
-                    startActivity(Intent.createChooser(shareIntent,"Send to"))
-                }
-                val view: View = (this@ShareVideoView as FragmentActivity).layoutInflater.inflate(
-                    R.layout.fragment_comments_a,
-                    null
-                )
-                val dialog = BottomSheetDialog(view.context)
-                dialog.setContentView(view)
-                view.findViewById<RecyclerView>(R.id.comment_rv).layoutManager = LinearLayoutManager(view.context)
-                var listText = arrayListOf<String>()
-                var listS = arrayListOf<CommentDataClass>()
-                FirebaseDatabase.getInstance().getReference("Comments")
-                    .child(getData?.videoId.toString())
-                    .addValueEventListener(object : ValueEventListener {
-
-                        override fun onDataChange(snapshot: DataSnapshot) {
-                            for (data in snapshot.children) {
-                                var get_data = data.getValue(CommentDataClass::class.java)
-                                if (get_data != null) {
-                                    listS.add(get_data)
-                                    comments_count++
-
-                                }
-                            }
-                          binding.commentsCount.setText(comments_count.toString())
-                            comments_count=0
-                            view.findViewById<RecyclerView>(R.id.comment_rv).adapter =
-                                CommentsAdapter(view.context, listS)
-
-                            //     view.findViewById<RecyclerView>(listInt[1]).adapter = CommentsAdapter(view.context ,listS,list[postion].videoLink)
-
-                        }
-
-                        override fun onCancelled(error: DatabaseError) {
-                            Toast.makeText(view.context, "${error}", Toast.LENGTH_SHORT).show()
-                        }
-
-                    })
-                listText.add(view.findViewById<EditText>(R.id.comments_et).text.toString())
-
-                view.findViewById<ImageView>(R.id.comments_sendbtn).setOnClickListener {
-                    FirebaseDatabase.getInstance().getReference("Comments")
-                        .child(getData?.videoId.toString()).push().setValue(
-                            CommentDataClass(
-                                "RondomMan",
-                                view.findViewById<EditText>(R.id.comments_et).text.toString()
-                            )
-                        )
-                    view.findViewById<EditText>(R.id.comments_et).setText("")
-                    listS.clear()
-                }
-              binding.videoHeartBtn.setOnClickListener {
-                  if (!binding.videoHeartBtn.isChecked) {
-                      binding.videoHeartBtn.setChecked(true);
-
-
-                  } else {
-
-                      FirebaseDatabase.getInstance().getReference("Likes")
-                          .child(getData?.videoId.toString()).push().setValue(
-                              Likes(
-                                  getData?.videoId,
-                                  getData?.videoLink,
-                                  FirebaseAuth.getInstance().currentUser!!.uid
-
-                              )
-                          )
-                      // count likes
-                      getLikes(getData?.videoId, binding.likesCount, binding.videoHeartBtn)
-                  }
-              }
-                getLikes(getData?.videoId, binding.likesCount, binding.videoHeartBtn)
-
-
-
-               binding.videoListComment.setOnClickListener {
-
-                    dialog.show()
-
-                }
-                Glide.with(this@ShareVideoView).load(getData?.CreatorProfile).into(binding.userProfile)
-                binding.viewViewVideoTitle.text = getData?.videoTitle
-                binding.videoViewUserName.text = getData?.CreatorName
-
-            }
-
-
-            override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
-            }
-            })
-
-
-
-
-
-
-
-            }
-    fun getLikes(videoId:String?, likesCount: TextView, videoHeartBtn: CheckBox) {
-        var k = 0
-        var im=0
-
-        FirebaseDatabase.getInstance().getReference("Likes")
-            .child(videoId.toString())
+        FirebaseDatabase.getInstance().getReference("Videos")
             .addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
-                    for (d in snapshot.children) {
-                        try {
-                            var data = d.getValue(Likes::class.java)
-                            if (data!!.user_Id.equals(FirebaseAuth.getInstance().currentUser!!.uid)) {
-                                videoHeartBtn.setChecked(true);
-                                k=1
-                                //   Toast.makeText(context, "True", Toast.LENGTH_SHORT).show()
 
+                    var list1 = ArrayList<VideoUploadModel>()
+                    for (snap in snapshot.children) {
+                        var data = snap.getValue(VideoUploadModel::class.java)
+
+
+                        if (json != null) {
+                            val jsonArray = JSONArray(json)
+                            val list4 = ArrayList<String>()
+                            for (i in 0 until jsonArray.length()) {
+                                val item = jsonArray.getString(i)
+                                list4.add(item)
                             }
 
-                        } catch (e: Exception) {
+                            if (data?.list!!.containsAll(list4) || list4.containsAll(data.list) || data.list.contains(
+                                    "eng"
+                                )
+                            ) {
+                                list1.add(data)
+                            } else {
 
+                                list1.add(data)
+                            }
                         }
-                        im++
+
+
                     }
-                    if (im == 0) {
-                        likesCount.setText("0")
-                    }else {
-                        // Toast.makeText(context, "$i", Toast.LENGTH_SHORT).show()
-                        likesCount.setText(im.toString())
-                        im=0
+
+                    list1.shuffle()
+                    var vidPostion =    list1.indexOf(list1.find { it.videoId!!.contains(getingVideoId.toString()) })
+                    list1[0] = list1[vidPostion]
+                    list1[vidPostion] = list1[0]
+                    try {
+                        binding.memesViewer.adapter =
+                            VideoAdapter(this@ShareVideoView, list1, list)
+
+
+                    } catch (e: Exception) {
+
                     }
 
 
                 }
 
+
                 override fun onCancelled(error: DatabaseError) {
-                    TODO("Not yet implemented")
+
                 }
 
             })
